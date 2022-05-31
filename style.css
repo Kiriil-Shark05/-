@@ -775,6 +775,12 @@ figcaption {
   line-height: 150%;
 }
 
+/*.big_phone_number {
+  padding: 10px;
+  margin: 0px 20px 0px 0px;
+  line-height: 150%;
+}*/
+
 .big {
   font-size: 32px;
 }
@@ -941,6 +947,12 @@ a {
   .fullscreen_container2 p {
       margin: 0px 0px 0px 20px;
   }
+
+/*  .big_phone_number {
+  padding: 10px;
+  margin: 0px 0px 0px 20px;
+  line-height: 150%;
+}*/
 }
 
 .swiper-button-prev::after,
