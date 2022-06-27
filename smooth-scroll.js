@@ -6,3 +6,16 @@ $('.scroll').on('click', function(e){
 });
 
 })
+
+// function ds() {
+//   window.scrollTo({
+//   top: 600,
+//   left: 100,
+//   behavior: 'smooth'
+// }, 1000);
+// }
+
+
+
+
+// setTimeout(() => {ds()}, 3000);
