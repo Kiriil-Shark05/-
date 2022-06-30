@@ -3,62 +3,80 @@
 
 let header = document.querySelector(".header");
 
-let scrollingElement = document.querySelector('[id^="link"]');
+let anchorsAndElements = {};
 
-if (scrollingElement != null) {
+let scrollingElements = document.querySelectorAll('[id^="link"]');
 
-    let scrollingElementId = scrollingElement.getAttribute("id");
+if (scrollingElements.length > 0) {
 
-    let closestFullscreenOrSwiper;
+    scrollingElements.forEach(scrollingElement => {
 
-    if (scrollingElement.closest(".fullscreen")) {
-      scrollingElement.closest(".fullscreen").setAttribute("id", `flag-${scrollingElementId}`);
-      closestFullscreenOrSwiper = scrollingElement.closest(".fullscreen");
-    } else if (scrollingElement.closest(".swiper-container")) {
-      scrollingElement.closest(".swiper-container").setAttribute("id", `flag-${scrollingElementId}`);
-      closestFullscreenOrSwiper = scrollingElement.closest(".swiper-container");
-    }
+      const scrollingElementId = scrollingElement.getAttribute("id");
 
-    let fullscreensCollection = document.querySelectorAll(".fullscreen");
+      let closestFullscreenOrSwiper;
 
-    let swipersCollection = document.querySelectorAll(".swiper-container");
+      if (scrollingElement.closest(".fullscreen")) {
+        scrollingElement.closest(".fullscreen").setAttribute("id", `closest-${scrollingElementId}`);
+        closestFullscreenOrSwiper = scrollingElement.closest(".fullscreen");
+      } else if (scrollingElement.closest(".swiper-container")) {
+        scrollingElement.closest(".swiper-container").setAttribute("id", `closest-${scrollingElementId}`);
+        closestFullscreenOrSwiper = scrollingElement.closest(".swiper-container");
+      }
 
-    let fullscreensArray = Array.from(fullscreensCollection);
 
-    let swipersArray = Array.from(swipersCollection);
+      let fullscreensCollection = document.querySelectorAll(".fullscreen");
 
-    let commonArray = fullscreensArray.concat(swipersArray);
+      let swipersCollection = document.querySelectorAll(".swiper-container");
 
-    let slicedArray = commonArray.slice(commonArray[0], commonArray.indexOf(closestFullscreenOrSwiper));
+      let fullscreensArray = Array.from(fullscreensCollection);
 
-    let heigthOfBlocks = [];
+      let swipersArray = Array.from(swipersCollection);
 
-    slicedArray.forEach(block => {
-      const blockHeight = block.clientHeight;
-      heigthOfBlocks.push(blockHeight);
-    });
+      let commonArray = fullscreensArray.concat(swipersArray);
 
-    const initialValue = 0;
+      let slicedArray = commonArray.slice(commonArray[0], commonArray.indexOf(closestFullscreenOrSwiper));
 
-    const sumOfBlocks = heigthOfBlocks.reduce(
-      (previosValue, currentValue) => previosValue + currentValue,
-      initialValue
-    );
+      let heigthOfBlocks = [];
 
-    const scrollPixels = sumOfBlocks - header.clientHeight;
+      slicedArray.forEach(block => {
+        const blockHeight = block.clientHeight;
+        heigthOfBlocks.push(blockHeight);
+      });
 
-    console.log(sumOfBlocks);
+      const initialValue = 0;
+
+      const sumOfBlocks = heigthOfBlocks.reduce(
+        (previosValue, currentValue) => previosValue + currentValue,
+        initialValue
+      );
+
+      const scrollPixels = sumOfBlocks - header.clientHeight;
+
+      anchorsAndElements[scrollingElement] = scrollingElement;
+
+      console.log(anchorsAndElements);
+
+      });
+}
+
+// я хотел создать объект для связывания scrollingElemets and anchorLinks
+
+
+
+
+
+
 
 
     let anchorLink = document.querySelector('a[href^="#"]');
 
-    anchorLink.addEventListener('click', e => {
-      e.preventDefault();
-      scrollTo({
-          top: scrollPixels,
-          behavior: "smooth"
+
+      anchorLink.addEventListener('click', e => {
+        e.preventDefault();
+        scrollTo({
+            top: scrollPixels,
+            behavior: "smooth"
+        });
       });
-    });
 
 
-}
