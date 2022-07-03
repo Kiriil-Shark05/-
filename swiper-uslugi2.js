@@ -15,7 +15,7 @@ const myImageSlider = new Swiper ('.swiper-container', {
 
 let sliderBlock = document.querySelector('.swiper-container');
 
-
+if (sliderBlock) {
 
 sliderBlock.addEventListener("mouseenter", function (e) {
 
@@ -27,3 +27,5 @@ sliderBlock.addEventListener("mouseenter", function (e) {
 sliderBlock.addEventListener("mouseleave", function (e) {
   myImageSlider.autoplay.stop();
 });
+
+}

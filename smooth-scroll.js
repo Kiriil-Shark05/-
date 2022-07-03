@@ -1,82 +1,44 @@
 
 "use strict"
 
-let header = document.querySelector(".header");
+function toFindHeaderHeigth() {
 
-let anchorsAndElements = {};
+  let header = document.querySelector(".header");
 
-let scrollingElements = document.querySelectorAll('[id^="link"]');
+  let body = document.querySelector("body");
 
-if (scrollingElements.length > 0) {
+  let html = document.querySelector("html");
 
-    scrollingElements.forEach(scrollingElement => {
+  let headerStyle = window.getComputedStyle(header);
 
-      const scrollingElementId = scrollingElement.getAttribute("id");
+  let headerHeight = headerStyle.getPropertyValue("height");
 
-      let closestFullscreenOrSwiper;
+  body.style.scrollPaddingTop = headerHeight;
 
-      if (scrollingElement.closest(".fullscreen")) {
-        scrollingElement.closest(".fullscreen").setAttribute("id", `closest-${scrollingElementId}`);
-        closestFullscreenOrSwiper = scrollingElement.closest(".fullscreen");
-      } else if (scrollingElement.closest(".swiper-container")) {
-        scrollingElement.closest(".swiper-container").setAttribute("id", `closest-${scrollingElementId}`);
-        closestFullscreenOrSwiper = scrollingElement.closest(".swiper-container");
-      }
+  html.style.scrollPaddingTop = headerHeight;
 
-
-      let fullscreensCollection = document.querySelectorAll(".fullscreen");
-
-      let swipersCollection = document.querySelectorAll(".swiper-container");
-
-      let fullscreensArray = Array.from(fullscreensCollection);
-
-      let swipersArray = Array.from(swipersCollection);
-
-      let commonArray = fullscreensArray.concat(swipersArray);
-
-      let slicedArray = commonArray.slice(commonArray[0], commonArray.indexOf(closestFullscreenOrSwiper));
-
-      let heigthOfBlocks = [];
-
-      slicedArray.forEach(block => {
-        const blockHeight = block.clientHeight;
-        heigthOfBlocks.push(blockHeight);
-      });
-
-      const initialValue = 0;
-
-      const sumOfBlocks = heigthOfBlocks.reduce(
-        (previosValue, currentValue) => previosValue + currentValue,
-        initialValue
-      );
-
-      const scrollPixels = sumOfBlocks - header.clientHeight;
-
-      anchorsAndElements[scrollingElement] = scrollingElement;
-
-      console.log(anchorsAndElements);
-
-      });
 }
 
-// я хотел создать объект для связывания scrollingElemets and anchorLinks
+window.addEventListener("resize", toFindHeaderHeigth());
+window.addEventListener("DOMContentLoaded", toFindHeaderHeigth());
 
 
+let anchorLinks = document.querySelectorAll('a[href^="#"]');
 
 
-
-
-
-
-    let anchorLink = document.querySelector('a[href^="#"]');
-
-
-      anchorLink.addEventListener('click', e => {
+anchorLinks.forEach(anchorLink => {
+    anchorLink.addEventListener('click', e => {
         e.preventDefault();
-        scrollTo({
-            top: scrollPixels,
-            behavior: "smooth"
-        });
-      });
+        document.querySelector(anchorLink.getAttribute("href")).scrollIntoView({
+          behavior: "smooth",
+        })
+    });
+
+})
+
+
+
+
+
 
 

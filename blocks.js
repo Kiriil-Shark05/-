@@ -20,8 +20,6 @@ let fullscreen01 = document.querySelector('.fullscreen01');
 // }
 
 
-
-
 let twoBlockHeight = twoBlock.clientHeight;
 let threeBlockHeight = threeBlock.clientHeight;
 let fourBlockHeight = fourBlock.clientHeight;
