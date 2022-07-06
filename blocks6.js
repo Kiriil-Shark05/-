@@ -37,15 +37,15 @@ let toop3 = vseHeight3;
 let right = (fourBlockWidth / 2) - fiveBlockWidth;
 let itog2 = twoBlock.style.top = toop2 + 'px';
 let itog3 = fourBlock.style.top = toop3 + 'px';
-let itog4 = twoBlock.style.marginTop = '-' + vseHeight4 + 'px';
+// let itog4 = twoBlock.style.marginTop = '-' + vseHeight4 + 'px';
 let itog5 = (twoBlockWidth - bodyWidth) / 2;
 let itog6 = dd_two.style.width = dd_oneWidth + 'px';
 let itog7 = dt_dotted_two.style.width = dt_dotted_one_width + 'px';
 
 
-if (oneBlockWidth <= 1192) {
-  itog4 = twoBlock.style.marginTop = 0 + 'px';
-}
+// if (oneBlockWidth <= 1192) {
+//   itog4 = twoBlock.style.marginTop = 0 + 'px';
+// }
 
 
   console.log(itog7);

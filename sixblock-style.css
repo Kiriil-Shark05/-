@@ -735,6 +735,7 @@ figcaption {
   top: 0;
   left: 0;
   align-items: flex-start;
+  background: none;
   background-color: #333;
   position: absolute;
   top: 100%;
@@ -1604,6 +1605,7 @@ figcaption {
   top: 0;
   left: 0;
   align-items: flex-start;
+  background: none;
   background-color: #333;
   position: absolute;
   top: 100%;

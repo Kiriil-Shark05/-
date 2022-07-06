@@ -599,7 +599,15 @@ figcaption {
   }
 }
 
-@media (max-height: 768px) and (max-width: 400px){
+@media (max-height: 768px) and (max-width: 515px){
+
+
+  .fullscreen01 {
+    height: calc(850px + (600 - 600) * ((100vh - 450px) / (600 - 450)));
+  }
+}
+
+@media (max-height: 768px) and (max-width: 450px){
 
 
   .fullscreen01 {
@@ -735,6 +743,7 @@ figcaption {
   top: 0;
   left: 0;
   align-items: flex-start;
+  background: none;
   background-color: #333;
   position: absolute;
   top: 100%;
@@ -1604,6 +1613,7 @@ figcaption {
   top: 0;
   left: 0;
   align-items: flex-start;
+  background: none;
   background-color: #333;
   position: absolute;
   top: 100%;
